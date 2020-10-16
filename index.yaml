@@ -1,25 +1,14 @@
 apiVersion: v1
 entries:
-  openhab:
-  - apiVersion: v2
-    appVersion: 2.5.9
-    created: "2020-10-16T17:52:41.563629076Z"
-    description: A Helm chart for Kubernetes
-    digest: 3c6d77a205895b0cafe7183282bc858aefe0ebeee1fe7f4d49941459534f867a
-    name: openhab
-    type: application
-    urls:
-    - https://github.com/kilip/helm-charts/releases/download/openhab-2.5.9/openhab-2.5.9.tgz
-    version: 2.5.9
   tasmo-admin:
   - apiVersion: v2
     appVersion: 1.7.0
-    created: "2020-10-16T17:52:41.671244312Z"
+    created: "2020-10-16T18:23:23.248084816Z"
     description: Tasmo Admin for Kubernetes
-    digest: 8556b7a42e3a4cd6f136066530cc4035a5b3a9f32b60ddf644ad9f8d6c2e811c
+    digest: 454d17072bd466bfe3226c314c091541e7241e6e29d31f3d9bbc68c161b7cebe
     name: tasmo-admin
     type: application
     urls:
-    - https://github.com/kilip/helm-charts/releases/download/tasmo-admin-1.7.0/tasmo-admin-1.7.0.tgz
-    version: 1.7.0
-generated: "2020-10-16T17:52:41.383923568Z"
+    - https://github.com/kilip/helm-charts/releases/download/tasmo-admin-1.7.0.1/tasmo-admin-1.7.0.1.tgz
+    version: 1.7.0.1
+generated: "2020-10-16T18:23:23.101327763Z"
