@@ -1,29 +1,51 @@
 apiVersion: v1
 entries:
+  mosquitto:
+  - apiVersion: v2
+    appVersion: 1.6.12
+    created: "2020-10-17T08:47:45.285334907Z"
+    description: Eclipse Mosquitto is an open source message broker which implements
+      MQTT version 5, 3.1.1 and 3.1
+    digest: 0e3f290d97c9322bdd7741393caeed5869833839e49adb22e86653b5156706cb
+    home: https://charts.itstoni.com
+    icon: https://raw.githubusercontent.com/eclipse/mosquitto/master/www/files/favicon-32x32.png
+    keywords:
+    - smart-home
+    - mqtt
+    - mosquitto
+    maintainers:
+    - name: kilip
+      url: me@itstoni.com
+    name: mosquitto
+    type: application
+    urls:
+    - https://github.com/kilip/helm-charts/releases/download/mosquitto-1.0.0/mosquitto-1.0.0.tgz
+    version: 1.0.0
   openhab:
   - apiVersion: v2
     appVersion: 2.5.9
-    created: "2020-10-17T04:22:56.097597002Z"
+    created: "2020-10-17T08:47:45.4297501Z"
     description: A Helm chart for Kubernetes
-    digest: f0aeb90292d6baba99f13072a73ff05696b8364f1e8367a525a845ad1dd0ccbe
+    digest: e47180866dd2641adc90ecdc91ee65526f9216e4c8c9598f8676dcb8c65f5d40
     home: https://charts.itstoni.com
     icon: https://avatars3.githubusercontent.com/u/1007353?s=200&v=4
     keywords:
     - smart-home
     - openhab
     maintainers:
-    - name: Anthonius Munthi
+    - name: kilip
+      url: https://itstoni.com
     name: openhab
     type: application
     urls:
-    - https://github.com/kilip/helm-charts/releases/download/openhab-1.0.0/openhab-1.0.0.tgz
-    version: 1.0.0
+    - https://github.com/kilip/helm-charts/releases/download/openhab-1.0.1/openhab-1.0.1.tgz
+    version: 1.0.1
   tasmo-admin:
   - apiVersion: v2
     appVersion: 1.7.0
-    created: "2020-10-17T04:22:56.191194232Z"
+    created: "2020-10-17T08:47:45.545151536Z"
     description: Tasmo Admin for Kubernetes
-    digest: bea4cdf3e8ab0ab5f67c564413e9e9649fb31a4136fe32c9d07fb253d65db2f4
+    digest: 797f446fe8280d31f4d84ca6419b1d0c628dff79bb7ccc1565f77c448ab870ee
     home: https://charts.itstoni.com
     icon: https://raw.githubusercontent.com/reloxx13/TasmoAdmin/master/tasmoadmin/resources/img/favicons/favicon-96x96.png
     keywords:
@@ -32,10 +54,11 @@ entries:
     - eclipse-iot
     - mosquitto
     maintainers:
-    - name: Anthonius Munthi
+    - name: kilip
+      url: https://itstoni.com
     name: tasmo-admin
     type: application
     urls:
-    - https://github.com/kilip/helm-charts/releases/download/tasmo-admin-1.0.0/tasmo-admin-1.0.0.tgz
-    version: 1.0.0
-generated: "2020-10-17T04:22:55.986460977Z"
+    - https://github.com/kilip/helm-charts/releases/download/tasmo-admin-1.0.1/tasmo-admin-1.0.1.tgz
+    version: 1.0.1
+generated: "2020-10-17T08:47:45.100239195Z"
