@@ -1,0 +1,15 @@
+apiVersion: v2
+name: mosquitto
+description: Eclipse Mosquitto is an open source message broker which implements MQTT version 5, 3.1.1 and 3.1
+type: application
+version: 1.0.0
+appVersion: 1.6.12
+icon: https://raw.githubusercontent.com/eclipse/mosquitto/master/www/files/favicon-32x32.png
+home: https://charts.itstoni.com
+keywords:
+  - smart-home
+  - mqtt
+  - mosquitto
+maintainers:
+  - name: Anthonius Munthi
+    homepage: me@itstoni.com
