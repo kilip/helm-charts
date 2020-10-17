@@ -2,7 +2,7 @@ apiVersion: v2
 name: openhab
 description: A Helm chart for Kubernetes
 type: application
-version: 1.0.0
+version: 1.0.1
 appVersion: 2.5.9
 icon: https://avatars3.githubusercontent.com/u/1007353?s=200&v=4
 home: https://charts.itstoni.com
@@ -10,5 +10,5 @@ keywords:
   - smart-home
   - openhab
 maintainers:
-  - name: Anthonius Munthi
-    homepage: me@itstoni.com
+  - name: kilip
+    url: https://itstoni.com
