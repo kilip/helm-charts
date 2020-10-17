@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "openhab.fullname" . }}-init-scripts
+  labels:
+    {{- include "openhab.labels" . | nindent 4 }}
+data:
+  00-init-userdata.sh: |
+    #!/bin/bash -x
+    # ensure userdata dir exists
+    
+    if [ ! -z "${OPENHAB_USERDATA}/etc/version.properties" ]
+    then
+      echo "Creating userdata dir: ${OPENHAB_USERDATA}"
+      mkdir -p "${OPENHAB_USERDATA}"
+      cp -av "${OPENHAB_HOME}/dist/userdata/." "${OPENHAB_USERDATA}/"
+    fi
+
+    if [ ! -z "${OPENHAB_CONF}" ]
+    then
+      echo "Creating config dir: ${OPENHAB_CONF}"
+      mkdir -p "${OPENHAB_CONF}"
+    fi
+    
+  01-openhabcloud.sh: |
+    #!/bin/bash -x
+    if [ ! -z ${OPENHAB_CLOUD_UUID} ]
+    then
+        mkdir -p "${OPENHAB_USERDATA}"
+        echo ${OPENHAB_CLOUD_UUID} > "${OPENHAB_USERDATA}/uuid"
+    fi
+
+    if [ ! -z ${OPENHAB_CLOUD_SECRET} ]
+    then
+        mkdir -p "${OPENHAB_USERDATA}/openhabcloud"
+        echo ${OPENHAB_CLOUD_SECRET} > "${OPENHAB_USERDATA}/openhabcloud/secret"
+    fi
+  02-setpcap-on-java.sh: |
+    #!/bin/bash -x
+    setcap 'cap_net_bind_service=+ep' "${JAVA_HOME}/bin/java"
