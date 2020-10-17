@@ -9,11 +9,11 @@ data:
     #!/bin/bash -x
     # ensure userdata dir exists
     
-    if [ ! -z "${OPENHAB_USERDATA}/etc/version.properties" ]
-    then
+    if [[ ! -f "${OPENHAB_USERDATA}/.olympus-lck" ]]; then
       echo "Creating userdata dir: ${OPENHAB_USERDATA}"
       mkdir -p "${OPENHAB_USERDATA}"
       cp -av "${OPENHAB_HOME}/dist/userdata/." "${OPENHAB_USERDATA}/"
+      touch "${OPENHAB_USERDATA}/.olympus-lck"
     fi
 
     if [ ! -z "${OPENHAB_CONF}" ]

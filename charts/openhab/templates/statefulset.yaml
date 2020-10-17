@@ -95,30 +95,56 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-          {{- if .Values.openhabCloud }}
+          {{- if .Values.openhabCloudSecretName }}
             - name: OPENHAB_CLOUD_UUID
-              value: "{{ .Values.openhabCloud.secret }}"
+              valueFrom:
+                secretKeyRef:
+                  name: "{{.Values.openhabCloudSecretName}}"
+                  key: "uuid"
             - name: OPENHAB_CLOUD_SECRET
-              value: "{{ .Values.openhabCloud.uuid }}"
+              valueFrom:
+                secretKeyRef:
+                  name: "{{.Values.openhabCloudSecretName}}"
+                  key: "secret"
           {{- end }}
             - name: OPENHAB_CONF
-              value: "/data/config"
+              valueFrom:
+                configMapKeyRef:
+                  name: "openhab"
+                  key: "OPENHAB_CONF"
             - name: OPENHAB_USERDATA
-              value: "/data/userdata"
+              valueFrom:
+                configMapKeyRef:
+                  name: "openhab"
+                  key: "OPENHAB_USERDATA"
             - name: USER_ID
-              value: "1000"
+              valueFrom:
+                configMapKeyRef:
+                  name: "openhab"
+                  key: "USER_ID"
             - name: GROUP_ID
-              value: "1000"
+              valueFrom:
+                configMapKeyRef:
+                  name: "openhab"
+                  key: "GROUP_ID"
             - name: OPENHAB_HTTP_PORT
-              value: "80"
+              valueFrom:
+                configMapKeyRef:
+                  name: "openhab"
+                  key: "OPENHAB_HTTP_PORT"
+            - name: OPENHAB_HTTPS_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: "openhab"
+                  key: "OPENHAB_HTTPS_PORT"
             - name: EXTRA_JAVA_OPTS
               value: "-Duser.timezone={{ .Values.environment.timezone }}"
           ports:
             - name: http
-              containerPort: 80
+              containerPort: {{.Values.environment.OPENHAB_HTTP_PORT}}
               protocol: TCP
             - name: https
-              containerPort: 8443
+              containerPort: {{.Values.environment.OPENHAB_HTTPS_PORT}}
               protocol: TCP
             - name: ssh
               containerPort: 8101
@@ -135,13 +161,13 @@ spec:
             httpGet:
               path: /
               port: http
-            initialDelaySeconds: 240
+            initialDelaySeconds: 300
             timeoutSeconds: 2
           readinessProbe:
             httpGet:
               path: /
               port: http
-            initialDelaySeconds: 240
+            initialDelaySeconds: 300
             timeoutSeconds: 2
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
