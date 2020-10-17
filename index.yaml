@@ -1,43 +1,23 @@
 apiVersion: v1
 entries:
-  mosquitto:
+  emby:
   - apiVersion: v2
-    appVersion: 1.6.12
-    created: "2020-10-17T13:48:14.898222431Z"
-    description: Eclipse Mosquitto is an open source message broker which implements
-      MQTT version 5, 3.1.1 and 3.1
-    digest: 5390b1bace5c648940ca46019c54e8324ec47b976aabeb558d4318e8eca163d2
+    appVersion: 4.5.2.0
+    created: "2020-10-17T17:37:43.893103719Z"
+    description: Emby Media SErver
+    digest: a1169da18c445a6e009f2c7b610d901970dbc45c89d0350e5228b7aa43b62fa7
     home: https://charts.itstoni.com
-    icon: https://raw.githubusercontent.com/eclipse/mosquitto/master/www/files/favicon-32x32.png
+    icon: https://avatars3.githubusercontent.com/u/3607473?s=200&v=4
     keywords:
     - smart-home
-    - mqtt
-    - mosquitto
-    maintainers:
-    - name: kilip
-      url: me@itstoni.com
-    name: mosquitto
-    type: application
-    urls:
-    - https://github.com/kilip/helm-charts/releases/download/mosquitto-1.0.1/mosquitto-1.0.1.tgz
-    version: 1.0.1
-  openhab:
-  - apiVersion: v2
-    appVersion: 2.5.9
-    created: "2020-10-17T13:48:15.021093342Z"
-    description: A Helm chart for Kubernetes
-    digest: 02e24de34ec73d91c97a476d518f3e76a63837f62976d1801f6234fcc30f4959
-    home: https://charts.itstoni.com
-    icon: https://avatars3.githubusercontent.com/u/1007353?s=200&v=4
-    keywords:
-    - smart-home
-    - openhab
+    - emby
+    - media
     maintainers:
     - name: kilip
       url: https://itstoni.com
-    name: openhab
+    name: emby
     type: application
     urls:
-    - https://github.com/kilip/helm-charts/releases/download/openhab-1.0.2/openhab-1.0.2.tgz
-    version: 1.0.2
-generated: "2020-10-17T13:48:14.704128815Z"
+    - https://github.com/kilip/helm-charts/releases/download/emby-1.0.0/emby-1.0.0.tgz
+    version: 1.0.0
+generated: "2020-10-17T17:37:43.769889519Z"
