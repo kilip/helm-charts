@@ -19,12 +19,10 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 
-# Define your openhab cloud uid and secret.
-# Example:
-#
-# openhabCloud:
-#   uuid: "c1ca3dee-250d-454a-9843-c948b40b0d13"
-#   secret: "9dD98qOg8q7xGQzKpJhF"
+# Define your openhab cloud secret.
+# Your secret should contain keys uuid and secret.
+# openhabCloudSecretName: ""
+
 
 persistence:
   enabled: false
@@ -100,6 +98,12 @@ affinity: {}
 
 environment:
   timezone: "UTC"
+  OPENHAB_CONF: "/data/config"
+  OPENHAB_USERDATA: "/data/userdata"
+  USER_ID: "1000"
+  GROUP_ID: "1000"
+  OPENHAB_HTTP_PORT: "8080"
+  OPENHAB_HTTPS_PORT: "8443"
 
 gitConfig:
   enabled: false

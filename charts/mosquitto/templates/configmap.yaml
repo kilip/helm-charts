@@ -13,15 +13,11 @@ data:
     persistence_location /mosquitto/data
     {{- end }}
 
-    {{- if .Values.passwordEntries }}
-    password_file /mosquitto/config/password.conf
+    {{- if .Values.auth }}
+    password_file /mosquitto/auth/{{.Values.auth.secretKey}}
     allow_anonymous false
     {{- end }}
     
     listener 1883 0.0.0.0
     listener 8883 0.0.0.0
-{{- end }}
-{{- if .Values.passwordEntries }}
-  password.conf: |
-    {{ .Values.passwordEntries }}
 {{- end }}

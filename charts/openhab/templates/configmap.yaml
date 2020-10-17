@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "openhab.fullname" . }}
+  labels:
+    {{- include "openhab.labels" . | nindent 4 }}
+data:
+  OPENHAB_CONF: '{{ default "/data/config" .Values.environment.OPENHAB_CONF }}'
+  OPENHAB_USERDATA: '{{ default "/data/userdata" .Values.environment.OPENHAB_USERDATA }}'
+  USER_ID: '{{ default "1000" .Values.environment.USER_ID }}'
+  GROUP_ID: '{{ default "1000" .Values.environment.GROUP_ID }}'
+  OPENHAB_HTTP_PORT: '{{ default "8080" .Values.environment.OPENHAB_HTTP_PORT }}'
+  OPENHAB_HTTPS_PORT: '{{ default "8443" .Values.environment.OPENHAB_HTTPS_PORT }}'
+  
