@@ -1,14 +1,3 @@
 apiVersion: v1
-entries:
-  tasmo-admin:
-  - apiVersion: v2
-    appVersion: 1.7.0
-    created: "2020-10-16T18:23:23.248084816Z"
-    description: Tasmo Admin for Kubernetes
-    digest: 454d17072bd466bfe3226c314c091541e7241e6e29d31f3d9bbc68c161b7cebe
-    name: tasmo-admin
-    type: application
-    urls:
-    - https://github.com/kilip/helm-charts/releases/download/tasmo-admin-1.7.0.1/tasmo-admin-1.7.0.1.tgz
-    version: 1.7.0.1
+entries: {}
 generated: "2020-10-16T18:23:23.101327763Z"
