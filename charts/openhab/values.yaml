@@ -24,7 +24,7 @@ openhab_cloud:
   secret: ""
 
 persistence:
-  enabled: False
+  enabled: false
   ## openahb data Persistent Volume Storage Class
   ## If defined, storageClassName: <storageClass>
   ## If set to "-", storageClassName: "", which disables dynamic provisioning
