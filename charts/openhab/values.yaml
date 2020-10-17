@@ -19,9 +19,12 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 
-openhab_cloud:
-  uid: ""
-  secret: ""
+# Define your openhab cloud uid and secret.
+# Example:
+#
+# openhabCloud:
+#   uuid: "c1ca3dee-250d-454a-9843-c948b40b0d13"
+#   secret: "9dD98qOg8q7xGQzKpJhF"
 
 persistence:
   enabled: false

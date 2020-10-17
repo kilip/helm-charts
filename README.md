@@ -1,5 +1,6 @@
 # My Personal Collection of Helm Charts
 [![](https://github.com/kilip/helm-charts/workflows/Release%20Charts/badge.svg?branch=master)](https://github.com/kilip/helm-charts/actions)
+[![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/olympus-iot)](https://artifacthub.io/packages/search?repo=olympus-iot)
 
 ## Usage
 

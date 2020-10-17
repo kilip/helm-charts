@@ -21,7 +21,8 @@ data:
       echo "Creating config dir: ${OPENHAB_CONF}"
       mkdir -p "${OPENHAB_CONF}"
     fi
-    
+
+  {{- if .Values.openhabCloud }}  
   01-openhabcloud.sh: |
     #!/bin/bash -x
     if [ ! -z ${OPENHAB_CLOUD_UUID} ]
@@ -35,6 +36,8 @@ data:
         mkdir -p "${OPENHAB_USERDATA}/openhabcloud"
         echo ${OPENHAB_CLOUD_SECRET} > "${OPENHAB_USERDATA}/openhabcloud/secret"
     fi
+  {{- end }}
+  
   02-setpcap-on-java.sh: |
     #!/bin/bash -x
     setcap 'cap_net_bind_service=+ep' "${JAVA_HOME}/bin/java"

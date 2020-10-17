@@ -95,10 +95,12 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
+          {{- if .Values.openhabCloud }}
             - name: OPENHAB_CLOUD_UUID
-              value: "c1ca3dee-250d-454a-9843-c948b40b0d13"
+              value: "{{ .Values.openhabCloud.secret }}"
             - name: OPENHAB_CLOUD_SECRET
-              value: "9dD98qOg8q7xGQzKpJhF"
+              value: "{{ .Values.openhabCloud.uuid }}"
+          {{- end }}
             - name: OPENHAB_CONF
               value: "/data/config"
             - name: OPENHAB_USERDATA
