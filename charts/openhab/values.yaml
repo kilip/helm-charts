@@ -39,7 +39,7 @@ persistence:
   # existingClaim: mosquitto-data
   accessMode: ReadWriteOnce
   size: 1Gi
-  
+
 podAnnotations: {}
 
 podSecurityContext: {}
