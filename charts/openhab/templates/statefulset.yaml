@@ -25,6 +25,10 @@ spec:
       serviceAccountName: {{ include "openhab.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      dnsConfig:
+        options:
+        - name: ndots
+          value: "1"
       volumes:
         - name: init-scripts
           configMap:
