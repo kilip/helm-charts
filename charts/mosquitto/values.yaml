@@ -92,11 +92,10 @@ ports:
     port: 9090
     protocol: TCP
 
-# Define your password entries here.
-# Example:
-# passwordEntries: |
-#   mqtt:$6$UWxhmhWYEY1lQALt$yBcPltbdYN3exQxcZuaBL9hHq99fN0Se4oQcNh4xEhIdPE+Z9bnPn9maoS/WqqshAtn3QliIQddCVvpd9C7ZNQ==
-# passwordEntries:
+# Define your secret that contains mosquitto password
+# auth:
+#   secretName: ""
+#   secretKey: ""
 
 # Define your own mosquitto configuration here
 # customConfig:

@@ -47,6 +47,10 @@ spec:
               mountPath: /mosquitto/config
             - name: data
               mountPath: /mosquitto/data
+          {{- if .Values.auth }}
+            - name: password
+              mountPath: /mosquitto/auth
+          {{- end }}
           livenessProbe:
             tcpSocket:
               port: mqtt
@@ -75,6 +79,11 @@ spec:
         - name: config
           configMap:
             name: {{ include "mosquitto.fullname" . }}
+      {{- if .Values.auth }}
+        - name: password
+          secret:
+            secretName: "{{.Values.auth.secretName}}"
+      {{- end }}
       {{- if not .Values.persistence.enabled }}
         - name: data
           emptyDir: {}
