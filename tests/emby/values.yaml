@@ -1,0 +1,8 @@
+persistence:
+  enabled: true
+  existingClaim: emby-pvc
+
+shares:
+  - name: media
+    claimName: nfs-media-pvc
+    mountPath: /mnt/media

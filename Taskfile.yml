@@ -1,0 +1,12 @@
+version: "3"
+
+tasks:
+  emby:
+    desc: build emby into minikube
+    cmds:
+    - kubectl apply -k ./tests/emby
+    - helm install emby ./charts/emby --values ./tests/emby/values.yaml
+  emby-clean:
+    desc: remove emby installation
+    cmds:
+    - helm uninstall emby
