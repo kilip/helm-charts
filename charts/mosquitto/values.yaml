@@ -67,7 +67,7 @@ tolerations: []
 affinity: {}
 
 persistence:
-  enabled: False
+  enabled: false
   annotations: {}
   ## mosquitto data Persistent Volume Storage Class
   ## If defined, storageClassName: <storageClass>
