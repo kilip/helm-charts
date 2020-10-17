@@ -98,17 +98,15 @@ affinity: {}
 
 environment:
   timezone: "UTC"
-
-gitConfig:
-  enabled: false
-  repoUrl: ""
-  # Define ssh private key if your repo is private
-  # secretName: git-credentials
-
-environment:
   OPENHAB_CONF: "/data/config"
   OPENHAB_USERDATA: "/data/userdata"
   USER_ID: "1000"
   GROUP_ID: "1000"
   OPENHAB_HTTP_PORT: "8080"
   OPENHAB_HTTPS_PORT: "8443"
+
+gitConfig:
+  enabled: false
+  repoUrl: ""
+  # Define ssh private key if your repo is private
+  # secretName: git-credentials
