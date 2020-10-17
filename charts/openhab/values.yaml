@@ -95,5 +95,11 @@ tolerations: []
 
 affinity: {}
 
-git_config:
+environment:
+  timezone: "UTC"
+
+gitConfig:
   enabled: false
+  repoUrl: ""
+  # Define ssh private key if your repo is private
+  # secretName: git-credentials

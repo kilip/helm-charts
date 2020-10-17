@@ -26,42 +26,49 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       volumes:
-      {{- if and .Values.git_config.enabled .Values.git_config.secret_name }}
+        - name: init-scripts
+          configMap:
+            name: {{ include "openhab.fullname" . }}-init-scripts
+            defaultMode: 0777
+      {{- if and .Values.gitConfig.enabled .Values.gitConfig.secretName }}
         - name: git-secret
-          secretName: {{ .Values.git_config.secret_name }}
-          defaultMode: 0400
+          secret:
+            secretName: {{ .Values.gitConfig.secretName }}
+            defaultMode: 0400
       {{- end }}
       {{- if not .Values.persistence.enabled }}
-        - name: userdata
+        - name: data
           emptyDir: {}
       {{- end }}
       {{- if and .Values.persistence.enabled .Values.persistence.existingClaim }}
-        - name: userdata
+        - name: data
           persistentVolumeClaim:
             claimName: {{ .Values.persistence.existingClaim }}
       {{- end }}
 
-      {{- if .Values.git_config.enabled }}
+      {{- if .Values.gitConfig.enabled }}
       initContainers:
         - name: openhab-config
           image: k8s.gcr.io/git-sync:v3.1.5
           imagePullPolicy: IfNotPresent
           volumeMounts:
-          - name: config
-            mountPath: /config
+          - name: data
+            mountPath: /data
+          {{- if .Values.gitConfig.secretName }}
           - name: git-secret
             mountPath: /etc/git-secret
+          {{- end }}
           env:
             - name: GIT_SYNC_REPO
-              value: "git@github.com:kilip/olympus-openhab.git"
+              value: "{{ .Values.gitConfig.repoUrl }}"
             - name: GIT_SYNC_BRANCH
               value: "master"
             - name: GIT_SYNC_DEPTH
               value: "1"
             - name: GIT_SYNC_ROOT
-              value: /config
+              value: /data
             - name: GIT_SYNC_DEST
-              value: openhab
+              value: config
             - name: GIT_SYNC_SSH
               value: "true"
             - name: GIT_KNOWN_HOSTS
@@ -83,6 +90,23 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: OPENHAB_CLOUD_UUID
+              value: "c1ca3dee-250d-454a-9843-c948b40b0d13"
+            - name: OPENHAB_CLOUD_SECRET
+              value: "9dD98qOg8q7xGQzKpJhF"
+            - name: OPENHAB_CONF
+              value: "/data/config"
+            - name: OPENHAB_USERDATA
+              value: "/data/userdata"
+            - name: USER_ID
+              value: "1000"
+            - name: GROUP_ID
+              value: "1000"
+            - name: OPENHAB_HTTP_PORT
+              value: "80"
+            - name: EXTRA_JAVA_OPTS
+              value: "-Duser.timezone={{ .Values.environment.timezone }}"
           ports:
             - name: http
               containerPort: 80
@@ -97,18 +121,22 @@ spec:
               containerPort: 5007
               protocol: TCP
           volumeMounts:
-            - name: userdata
-              mountPath: /openhab/userdata
-            - name: config
-              mountPath: /openhab/conf
-          #livenessProbe:
-          #  httpGet:
-          #    path: /
-          #    port: http
-          #readinessProbe:
-          #  httpGet:
-          #    path: /
-          #    port: http
+            - name: data
+              mountPath: /data
+            - name: init-scripts
+              mountPath: /etc/cont-init.d
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 240
+            timeoutSeconds: 2
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 240
+            timeoutSeconds: 2
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
