@@ -3,9 +3,9 @@ entries:
   emby:
   - apiVersion: v2
     appVersion: 4.5.2.0
-    created: "2020-10-17T17:37:43.893103719Z"
+    created: "2020-10-22T10:25:28.275235254Z"
     description: Emby Media SErver
-    digest: a1169da18c445a6e009f2c7b610d901970dbc45c89d0350e5228b7aa43b62fa7
+    digest: 6da7720df0eaeb642c36f5ec4769f15c165e4e70ee1d6d821310398056c7978d
     home: https://charts.itstoni.com
     icon: https://avatars3.githubusercontent.com/u/3607473?s=200&v=4
     keywords:
@@ -18,6 +18,67 @@ entries:
     name: emby
     type: application
     urls:
-    - https://github.com/kilip/helm-charts/releases/download/emby-1.0.0/emby-1.0.0.tgz
-    version: 1.0.0
-generated: "2020-10-17T17:37:43.769889519Z"
+    - https://github.com/kilip/helm-charts/releases/download/emby-1.0.1/emby-1.0.1.tgz
+    version: 1.0.1
+  mosquitto:
+  - apiVersion: v2
+    appVersion: 1.6.12
+    created: "2020-10-22T10:25:28.394674953Z"
+    description: Eclipse Mosquitto is an open source message broker which implements
+      MQTT version 5, 3.1.1 and 3.1
+    digest: 060ddafde49274b6a5d1b96fccb2fadb802a39e75eceff3f8df5eab0aceb5044
+    home: https://charts.itstoni.com
+    icon: https://raw.githubusercontent.com/eclipse/mosquitto/master/www/files/favicon-32x32.png
+    keywords:
+    - smart-home
+    - mqtt
+    - mosquitto
+    maintainers:
+    - name: kilip
+      url: me@itstoni.com
+    name: mosquitto
+    type: application
+    urls:
+    - https://github.com/kilip/helm-charts/releases/download/mosquitto-1.0.2/mosquitto-1.0.2.tgz
+    version: 1.0.2
+  openhab:
+  - apiVersion: v2
+    appVersion: 2.5.9
+    created: "2020-10-22T10:25:28.494921188Z"
+    description: A Helm chart for Kubernetes
+    digest: 1f9d346e021f8881ddff18656c5638ae7e8562187db183580992012394a5672a
+    home: https://charts.itstoni.com
+    icon: https://avatars3.githubusercontent.com/u/1007353?s=200&v=4
+    keywords:
+    - smart-home
+    - openhab
+    maintainers:
+    - name: kilip
+      url: https://itstoni.com
+    name: openhab
+    type: application
+    urls:
+    - https://github.com/kilip/helm-charts/releases/download/openhab-1.0.3/openhab-1.0.3.tgz
+    version: 1.0.3
+  tasmo-admin:
+  - apiVersion: v2
+    appVersion: 1.7.0
+    created: "2020-10-22T10:25:28.630495441Z"
+    description: Tasmo Admin for Kubernetes
+    digest: 623f7a4633dc56d435d048c4e86545290830ce0828477ec1510375061ebcd6f6
+    home: https://charts.itstoni.com
+    icon: https://raw.githubusercontent.com/reloxx13/TasmoAdmin/master/tasmoadmin/resources/img/favicons/favicon-96x96.png
+    keywords:
+    - tasmota
+    - mqtt
+    - eclipse-iot
+    - mosquitto
+    maintainers:
+    - name: kilip
+      url: https://itstoni.com
+    name: tasmo-admin
+    type: application
+    urls:
+    - https://github.com/kilip/helm-charts/releases/download/tasmo-admin-1.0.2/tasmo-admin-1.0.2.tgz
+    version: 1.0.2
+generated: "2020-10-22T10:25:28.140478303Z"
