@@ -13,6 +13,8 @@ image:
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
+#
+#
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -38,6 +40,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
+
   # externalTrafficPolicy:
   # loadBalancerIP
 # Add annotations for external-dns and loadbalancers
