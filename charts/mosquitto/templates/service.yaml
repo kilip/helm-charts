@@ -11,8 +11,8 @@ metadata:
   {{- end }}
   {{- end }}
 spec:
-  {{- if .Values.externalTrafficPolicy }}
-  externalTrafficPolicy: {{ .Values.externalTrafficPolicy }}
+  {{- if .Values.service.externalTrafficPolicy }}
+  externalTrafficPolicy: {{ .Values.service.externalTrafficPolicy }}
   {{- end }}
   type: {{ .Values.service.type }}
   {{- if .Values.service.loadBalancerIP }}
