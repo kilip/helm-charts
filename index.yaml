@@ -3,10 +3,10 @@ entries:
   mosquitto:
   - apiVersion: v2
     appVersion: 1.6.12
-    created: "2020-10-17T13:48:14.898222431Z"
+    created: "2020-10-24T06:09:46.326438227Z"
     description: Eclipse Mosquitto is an open source message broker which implements
       MQTT version 5, 3.1.1 and 3.1
-    digest: 5390b1bace5c648940ca46019c54e8324ec47b976aabeb558d4318e8eca163d2
+    digest: ab9080fcb91118cb802728ddbbd4a3478d64270073540d50cddd698a6582edcc
     home: https://charts.itstoni.com
     icon: https://raw.githubusercontent.com/eclipse/mosquitto/master/www/files/favicon-32x32.png
     keywords:
@@ -19,25 +19,6 @@ entries:
     name: mosquitto
     type: application
     urls:
-    - https://github.com/kilip/helm-charts/releases/download/mosquitto-1.0.1/mosquitto-1.0.1.tgz
-    version: 1.0.1
-  openhab:
-  - apiVersion: v2
-    appVersion: 2.5.9
-    created: "2020-10-17T13:48:15.021093342Z"
-    description: A Helm chart for Kubernetes
-    digest: 02e24de34ec73d91c97a476d518f3e76a63837f62976d1801f6234fcc30f4959
-    home: https://charts.itstoni.com
-    icon: https://avatars3.githubusercontent.com/u/1007353?s=200&v=4
-    keywords:
-    - smart-home
-    - openhab
-    maintainers:
-    - name: kilip
-      url: https://itstoni.com
-    name: openhab
-    type: application
-    urls:
-    - https://github.com/kilip/helm-charts/releases/download/openhab-1.0.2/openhab-1.0.2.tgz
-    version: 1.0.2
-generated: "2020-10-17T13:48:14.704128815Z"
+    - https://github.com/kilip/helm-charts/releases/download/mosquitto-1.0.3/mosquitto-1.0.3.tgz
+    version: 1.0.3
+generated: "2020-10-24T06:09:46.213242644Z"
