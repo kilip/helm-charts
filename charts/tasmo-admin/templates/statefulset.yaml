@@ -80,7 +80,7 @@ spec:
   - metadata:
       name: data
       labels:
-        app.kubernetes.io/name: {{ include "openhab.name" . }}
+        app.kubernetes.io/name: {{ include "tasmo-admin.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     {{- if .Values.persistence.annotations }}
       annotations:
