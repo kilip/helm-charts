@@ -3,10 +3,10 @@ kind: ConfigMap
 metadata:
   name: {{ include "mosquitto.fullname" . }}
   labels:
-    {{- include "mosquitto.labels" . | nindent 4 }}
+  {{- include "mosquitto.labels" . | nindent 4 }}
 data:
   mosquitto.conf: |
-{{- if not .Values.customConfig }}
+    {{- if not .Values.customConfig }}
     {{- if .Values.persistence.enabled }}
     persistence true
     persistence_file mosquitto.db
@@ -17,7 +17,9 @@ data:
     password_file /mosquitto/auth/{{.Values.auth.secretKey}}
     allow_anonymous false
     {{- end }}
-    
+
     listener 1883 0.0.0.0
     listener 8883 0.0.0.0
-{{- end }}
+    {{- else -}}
+    {{ .Values.customConfig | nindent 4 }}
+    {{- end }}
