@@ -24,8 +24,7 @@ entries:
   - apiVersion: v2
     appVersion: 1.6.12
     created: "2020-10-24T06:09:46.326438227Z"
-    description: Eclipse Mosquitto is an open source message broker which implements
-      MQTT version 5, 3.1.1 and 3.1
+    description: Eclipse Mosquitto is an open source message broker which implements MQTT version 5, 3.1.1 and 3.1
     digest: ab9080fcb91118cb802728ddbbd4a3478d64270073540d50cddd698a6582edcc
     home: https://charts.itstoni.com
     icon: https://raw.githubusercontent.com/eclipse/mosquitto/master/www/files/favicon-32x32.png
@@ -61,6 +60,26 @@ entries:
     - https://github.com/kilip/helm-charts/releases/download/openhab-1.0.3/openhab-1.0.3.tgz
     version: 1.0.3
   tasmo-admin:
+  - apiVersion: v2
+    appVersion: 1.7.0
+    created: "2020-11-25T02:27:38.23487917Z"
+    description: Tasmo Admin for Kubernetes
+    digest: 7ad681c8189b359afdf238f006feb6dd79eaf2f06b1938ff05f83564e1cd1436
+    home: https://charts.itstoni.com
+    icon: https://raw.githubusercontent.com/reloxx13/TasmoAdmin/master/tasmoadmin/resources/img/favicons/favicon-96x96.png
+    keywords:
+    - tasmota
+    - mqtt
+    - eclipse-iot
+    - mosquitto
+    maintainers:
+    - name: kilip
+      url: https://itstoni.com
+    name: tasmo-admin
+    type: application
+    urls:
+    - https://github.com/kilip/helm-charts/releases/download/tasmo-admin-1.0.3/tasmo-admin-1.0.3.tgz
+    version: 1.0.3
   - apiVersion: v2
     appVersion: 1.7.0
     created: "2020-10-22T10:25:28.630495441Z"
