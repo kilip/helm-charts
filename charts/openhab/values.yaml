@@ -108,5 +108,6 @@ environment:
 gitConfig:
   enabled: false
   repoUrl: ""
+  branch: master
   # Define ssh private key if your repo is private
   # secretName: git-credentials
