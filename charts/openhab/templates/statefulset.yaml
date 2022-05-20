@@ -66,7 +66,7 @@ spec:
             - name: GIT_SYNC_REPO
               value: "{{ .Values.gitConfig.repoUrl }}"
             - name: GIT_SYNC_BRANCH
-              value: "master"
+              value: {{ .Values.gitConfig.branch | quote }}
             - name: GIT_SYNC_DEPTH
               value: "1"
             - name: GIT_SYNC_ROOT
