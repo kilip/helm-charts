@@ -1,12 +1,14 @@
 # Olympus Helm Charts
 
-[Helm](https://helm.sh) repo for different charts related to Nextcloud which can be installed on [Kubernetes](https://kubernetes.io)
+[Helm](https://helm.sh) repo for  [Kubernetes](https://kubernetes.io)
 
-### Add Helm repository
+Popular applications provided by [kilip](https://github.com/kilip), ready to launch on [Kubernetes](https://kubernetes.io) using [Helm](https://helm.sh)
+
+### TL;DR
 
 To install the repo just run:
-
 ```bash
-helm repo add olympus https://charts.itstoni.com/
-helm repo update
+$ helm repo add olympus https://charts.itstoni.com/
+$ helm search repo olympus
+$ helm install my-release olympus/chart-name
 ```
