@@ -2,6 +2,8 @@ name: Lint and Test Charts
 on: 
   pull_request:
   push:
+env:
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: "true"
 jobs:
   lint-test:
     runs-on: ubuntu-latest
