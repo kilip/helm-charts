@@ -4,7 +4,7 @@ image:
   repository: openhab/openhab
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "2.5.9"
+  tag: "3.4.3"
 
 imagePullSecrets: []
 nameOverride: ""
