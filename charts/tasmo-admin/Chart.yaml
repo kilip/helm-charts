@@ -1,0 +1,9 @@
+apiVersion: v2
+name: tasmo-admin
+description: A Helm chart for TasmoAdmin
+type: application
+version: 3.0.2-rc1
+appVersion: "v3.0.2"
+icon: https://tasmota.github.io/docs/_media/logo.svg
+maintainers:
+  - name: kilip
