@@ -54,9 +54,9 @@ openhab:
   https_port: "8443"
   cloud_uuid:
   cloud_secret:
-  
+
 persistence:
   userdata:
-    existingClaim: ""
+    existingClaim:
   config:
-    existingClaim: ""
+    existingClaim:

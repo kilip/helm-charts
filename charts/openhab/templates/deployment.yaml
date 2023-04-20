@@ -91,8 +91,17 @@ spec:
                   key: "cloud_secret"
           {{- end }}
         # end container
-  
+
       volumes:
+      {{- if not .Values.persistence.userdata.existingClaim }}
+      - name: userdata
+        emptyDir: {}
+      {{ end -}}
+      {{- if not .Values.persistence.config.existingClaim }}
+      - name: config
+        emptyDir: {}
+      {{- end }}
+
       {{- if .Values.persistence.userdata.existingClaim }}
         - name: userdata
           persistentVolumeClaim:
