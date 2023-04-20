@@ -25,6 +25,11 @@ tasks:
   pull-secret:
     desc: Add image pull secret
     cmds:
-      - kubectl create secret generic github-pull-secret
-          --from-file=.dockerconfigjson=/home/toni/.docker/config.json
-          --type=kubernetes.io/dockerconfigjson
+      #- kubectl create secret generic github-pull-secret
+      #    --from-file=.dockerconfigjson=/home/toni/.docker/config.json
+      #    --type=kubernetes.io/dockerconfigjson
+      - kubectl create secret docker-registry github-secret
+          --docker-username=kilip
+          --docker-password=$(pass github/pull-token)
+          --docker-email=$(pass github/email)
+          --docker-server=https://ghcr.io

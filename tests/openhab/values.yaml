@@ -1,5 +1,5 @@
 imagePullSecrets:
-  - name: github-pull-secret
+  - name: github-secret
 image:
   repository: ghcr.io/kilip/openhab
   tag: 3.4.3-rc1
