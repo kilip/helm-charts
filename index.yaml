@@ -89,6 +89,19 @@ entries:
     version: 1.0.3
   tasmo-admin:
   - apiVersion: v2
+    appVersion: v3.0.2
+    created: "2023-04-20T06:31:11.128875827Z"
+    description: A Helm chart for TasmoAdmin
+    digest: 28fa5aaf613456d61448773c88b6f88d91fb637bf1662ce6b91c2c8403f68765
+    icon: https://tasmota.github.io/docs/_media/logo.svg
+    maintainers:
+    - name: kilip
+    name: tasmo-admin
+    type: application
+    urls:
+    - https://github.com/kilip/helm-charts/releases/download/tasmo-admin-3.0.2-rc1/tasmo-admin-3.0.2-rc1.tgz
+    version: 3.0.2-rc1
+  - apiVersion: v2
     appVersion: 1.7.0
     created: "2020-11-25T02:27:38.23487917Z"
     description: Tasmo Admin for Kubernetes
