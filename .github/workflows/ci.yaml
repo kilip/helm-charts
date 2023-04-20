@@ -6,10 +6,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Fetch history
-        run: |
-          git fetch --prune --unshallow;
-          echo ::set-env name=commitmsg::$(git log --format=%B -n 1 ${{ github.event.after }})
+      #- name: Fetch history
+      #  run: |
+      #    git fetch --prune --unshallow;
+      #    echo ::set-env name=commitmsg::$(git log --format=%B -n 1 ${{ github.event.after }})
       - name: Run chart-testing (lint)
         id: lint
         uses: helm/chart-testing-action@v1.0.0

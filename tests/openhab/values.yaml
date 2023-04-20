@@ -2,13 +2,14 @@ imagePullSecrets:
   - name: github-pull-secret
 image:
   repository: ghcr.io/kilip/openhab
-  tag: 3.4.3.1
+  tag: 3.4.3-rc1
   imagePullPolicy: Always
 persistence:
   userdata:
     existingClaim: openhab-userdata-pvc
   config:
     existingClaim: openhab-config-pvc
+
 openhab:
   cloud_uuid: test
   cloud_secret: test

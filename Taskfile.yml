@@ -1,17 +1,26 @@
 version: "3"
 
 tasks:
+  install:
+    cmds:
+      - helm install {{.CHART}} charts/{{.CHART}} --values tests/{{.CHART}}/values.yaml
+    vars:
+      CHART: '{{ (split " " .CLI_ARGS)._0 }}'
+
   port-forward:
     desc: Forward a service port
     cmds:
-      - export POD_NAME=$(kubectl get pods -l "app.kubernetes.io/name=openhab,app.kubernetes.io/instance=openhab" -o jsonpath="{.items[0].metadata.name}")
+      - export POD_NAME=$(kubectl get pods -l "app.kubernetes.io/name={{.CHART}},app.kubernetes.io/instance={{.CHART}}" -o jsonpath="{.items[0].metadata.name}")
       - kubectl port-forward
           $(kubectl get pods -l
-            "app.kubernetes.io/name=openhab,app.kubernetes.io/instance=openhab"
+            "app.kubernetes.io/name={{.CHART}},app.kubernetes.io/instance={{.CHART}}"
             -o jsonpath="{.items[0].metadata.name}"
           )
         8080:8080
       #- kubectl port-forward $POD_NAME 8080:8080
+    vars:
+      CHART: '{{ (split " " .CLI_ARGS)._0 }}'
+    
   pull-secret:
     desc: Add image pull secret
     cmds:
