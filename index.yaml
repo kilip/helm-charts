@@ -43,6 +43,19 @@ entries:
   openhab:
   - apiVersion: v2
     appVersion: 3.4.3
+    created: "2023-04-20T14:03:56.707550002Z"
+    description: A Helm chart for Kubernetes
+    digest: 5ead1e43d477982e2e88ba114f0daa616f4de630e2c680094de54e3f824f1218
+    icon: https://www.openhab.org/openhab-logo-square.png
+    maintainers:
+    - name: kilip
+    name: openhab
+    type: application
+    urls:
+    - https://github.com/kilip/helm-charts/releases/download/openhab-3.4.3-rc2/openhab-3.4.3-rc2.tgz
+    version: 3.4.3-rc2
+  - apiVersion: v2
+    appVersion: 3.4.3
     created: "2023-04-20T05:04:29.132572028Z"
     description: A Helm chart for Kubernetes
     digest: 8c5644a84838c59f843d24373c58e0c1866fe604357a33e2d066dc361f790ff3
@@ -88,6 +101,19 @@ entries:
     - https://github.com/kilip/helm-charts/releases/download/openhab-1.0.3/openhab-1.0.3.tgz
     version: 1.0.3
   tasmo-admin:
+  - apiVersion: v2
+    appVersion: v3.0.2
+    created: "2023-04-20T14:03:56.831035462Z"
+    description: A Helm chart for TasmoAdmin
+    digest: 43d55039bbb414bd4af4fc0afb5451deb163fcb6c960d873aa3bc097dca73de9
+    icon: https://tasmota.github.io/docs/_media/logo.svg
+    maintainers:
+    - name: kilip
+    name: tasmo-admin
+    type: application
+    urls:
+    - https://github.com/kilip/helm-charts/releases/download/tasmo-admin-3.0.2-rc2/tasmo-admin-3.0.2-rc2.tgz
+    version: 3.0.2-rc2
   - apiVersion: v2
     appVersion: v3.0.2
     created: "2023-04-20T06:31:11.128875827Z"
