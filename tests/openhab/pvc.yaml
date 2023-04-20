@@ -1,0 +1,37 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: openhab-pv
+spec:
+  storageClassName: openhab-pv
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 5Gi
+  hostPath:
+    path: /tmp/openhab
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: openhab-userdata-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: openhab-pv
+  resources:
+    requests:
+      storage: 2Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: openhab-config-pvc
+spec:
+  storageClassName: openhab-pv
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 2Gi

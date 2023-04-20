@@ -60,14 +60,3 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
-
-{{/*
-Create image name that is used in the deployment
-*/}}
-{{- define "openhab.image" -}}
-{{- if .Values.image.tag -}}
-{{- printf "%s:%s" .Values.image.repository .Values.image.tag -}}
-{{- else -}}
-{{- printf "%s:%s-%s" .Values.image.repository .Chart.AppVersion (default "alpine" .Values.image.flavor) -}}
-{{- end -}}
-{{- end -}}
