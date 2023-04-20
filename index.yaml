@@ -42,6 +42,16 @@ entries:
     version: 1.0.3
   openhab:
   - apiVersion: v2
+    appVersion: 3.4.3
+    created: "2023-04-20T05:04:29.132572028Z"
+    description: A Helm chart for Kubernetes
+    digest: 8c5644a84838c59f843d24373c58e0c1866fe604357a33e2d066dc361f790ff3
+    name: openhab
+    type: application
+    urls:
+    - https://github.com/kilip/helm-charts/releases/download/openhab-3.4.3-rc1/openhab-3.4.3-rc1.tgz
+    version: 3.4.3-rc1
+  - apiVersion: v2
     appVersion: 2.5.9
     created: "2022-05-20T15:33:00.143220678Z"
     description: A Helm chart for Kubernetes
