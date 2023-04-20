@@ -1,7 +1,6 @@
 name: Lint and Test Charts
-on: 
-  pull_request:
-  push:
+on: pull_request
+
 jobs:
   lint-test:
     runs-on: ubuntu-latest
