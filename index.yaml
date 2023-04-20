@@ -43,6 +43,19 @@ entries:
   openhab:
   - apiVersion: v2
     appVersion: 3.4.3
+    created: "2023-04-20T18:18:15.59691746Z"
+    description: A Helm chart for Kubernetes
+    digest: 57416abb1c646a36e306aabc4669631e9a1e6baf0a4790d37d3e0503bcf26a8b
+    icon: https://www.openhab.org/openhab-logo-square.png
+    maintainers:
+    - name: kilip
+    name: openhab
+    type: application
+    urls:
+    - https://github.com/kilip/helm-charts/releases/download/openhab-3.4.3-rc3/openhab-3.4.3-rc3.tgz
+    version: 3.4.3-rc3
+  - apiVersion: v2
+    appVersion: 3.4.3
     created: "2023-04-20T14:03:56.707550002Z"
     description: A Helm chart for Kubernetes
     digest: 5ead1e43d477982e2e88ba114f0daa616f4de630e2c680094de54e3f824f1218
