@@ -57,22 +57,22 @@ spec:
             - name: USER_ID
               valueFrom:
                 configMapKeyRef:
-                  name: "openhab"
+                  name: {{ template "openhab.fullname" . }}-config
                   key: "user_id"
             - name: GROUP_ID
               valueFrom:
                 configMapKeyRef:
-                  name: "openhab"
+                  name: {{ template "openhab.fullname" . }}-config
                   key: "group_id"
             - name: OPENHAB_HTTP_PORT
               valueFrom:
                 configMapKeyRef:
-                  name: "openhab"
+                  name: {{ template "openhab.fullname" . }}-config
                   key: "http_port"
             - name: OPENHAB_HTTPS_PORT
               valueFrom:
                 configMapKeyRef:
-                  name: "openhab"
+                  name: {{ template "openhab.fullname" . }}-config
                   key: "https_port"
             - name: EXTRA_JAVA_OPTS
               value: "-Duser.timezone={{ .Values.openhab.timezone }}"
@@ -80,14 +80,14 @@ spec:
             - name: OPENHAB_CLOUD_UUID
               valueFrom:
                 configMapKeyRef:
-                  name: "openhab"
+                  name: {{ template "openhab.fullname" . }}-config
                   key: "cloud_uuid"
           {{- end }}
           {{- if .Values.openhab.cloud_secret }}
             - name: OPENHAB_CLOUD_SECRET
               valueFrom:
                 configMapKeyRef:
-                  name: "openhab"
+                  name: {{ template "openhab.fullname" . }}-config
                   key: "cloud_secret"
           {{- end }}
         # end container
