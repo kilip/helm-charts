@@ -12,7 +12,7 @@ jobs:
           echo ::set-env name=commitmsg::$(git log --format=%B -n 1 ${{ github.event.after }})
       - name: Run chart-testing (lint)
         id: lint
-        uses: helm/chart-testing-action@v1.0.0
+        uses: helm/chart-testing-action@v2.4.0
         if: "! contains(env.commitmsg, '[skip lint]')"
         with:
           command: lint
@@ -21,7 +21,7 @@ jobs:
         uses: helm/kind-action@v1.0.0
         if: "steps.lint.outputs.changed == 'true' && ! contains(env.commitmsg, '[skip install]')"
       - name: Run chart-testing (install)
-        uses: helm/chart-testing-action@v1.0.0
+        uses: helm/chart-testing-action@v2.4.0
         if: "steps.lint.outputs.changed == 'true' && ! contains(env.commitmsg, '[skip install]')"
         with:
           command: install
