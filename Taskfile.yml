@@ -3,9 +3,10 @@ version: "3"
 tasks:
   install:
     cmds:
-      - helm install {{.CHART}} charts/{{.CHART}} --values tests/{{.CHART}}/values.yaml
+      - helm install {{.CHART}} charts/{{.CHART}} --values tests/{{.CHART}}/{{.VALUES}}
     vars:
       CHART: '{{ (split " " .CLI_ARGS)._0 }}'
+      VALUES: '{{ default "values.yaml" (split " " .CLI_ARGS)._1 }}'
 
   port-forward:
     desc: Forward a service port
@@ -20,7 +21,7 @@ tasks:
       #- kubectl port-forward $POD_NAME 8080:8080
     vars:
       CHART: '{{ (split " " .CLI_ARGS)._0 }}'
-    
+
   pull-secret:
     desc: Add image pull secret
     cmds:

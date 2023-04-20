@@ -54,9 +54,21 @@ openhab:
   https_port: "8443"
   cloud_uuid:
   cloud_secret:
-  
+
 persistence:
   userdata:
-    existingClaim: ""
+    storageClassName: ""
+    size: 256Mi
+    accessMode: ReadWriteMany
+    ## Existing PersistentVolumeClaims
+    ## The value is evaluated as a template
+    ## So, for example, the name can depend on .Release or .Chart
+    # existingClaim: ""
   config:
-    existingClaim: ""
+    storageClassName: ""
+    size: 256Mi
+    accessMode: ReadWriteMany
+    ## Existing PersistentVolumeClaims
+    ## The value is evaluated as a template
+    ## So, for example, the name can depend on .Release or .Chart
+    # existingClaim: ""

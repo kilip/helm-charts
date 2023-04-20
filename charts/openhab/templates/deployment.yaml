@@ -57,22 +57,22 @@ spec:
             - name: USER_ID
               valueFrom:
                 configMapKeyRef:
-                  name: "openhab"
+                  name: {{ template "openhab.fullname" . }}-config
                   key: "user_id"
             - name: GROUP_ID
               valueFrom:
                 configMapKeyRef:
-                  name: "openhab"
+                  name: {{ template "openhab.fullname" . }}-config
                   key: "group_id"
             - name: OPENHAB_HTTP_PORT
               valueFrom:
                 configMapKeyRef:
-                  name: "openhab"
+                  name: {{ template "openhab.fullname" . }}-config
                   key: "http_port"
             - name: OPENHAB_HTTPS_PORT
               valueFrom:
                 configMapKeyRef:
-                  name: "openhab"
+                  name: {{ template "openhab.fullname" . }}-config
                   key: "https_port"
             - name: EXTRA_JAVA_OPTS
               value: "-Duser.timezone={{ .Values.openhab.timezone }}"
@@ -80,28 +80,34 @@ spec:
             - name: OPENHAB_CLOUD_UUID
               valueFrom:
                 configMapKeyRef:
-                  name: "openhab"
+                  name: {{ template "openhab.fullname" . }}-config
                   key: "cloud_uuid"
           {{- end }}
           {{- if .Values.openhab.cloud_secret }}
             - name: OPENHAB_CLOUD_SECRET
               valueFrom:
                 configMapKeyRef:
-                  name: "openhab"
+                  name: {{ template "openhab.fullname" . }}-config
                   key: "cloud_secret"
           {{- end }}
         # end container
-  
+
       volumes:
       {{- if .Values.persistence.userdata.existingClaim }}
-        - name: userdata
-          persistentVolumeClaim:
-          claimName: {{ .Values.persistence.userdata.existingClaim }}
+      - name: userdata
+        persistentVolumeClaim:
+        claimName: {{ .Values.persistence.userdata.existingClaim }}
+      {{- else if not .Values.persistence.userdata.storageClassName }}
+      - name: userdata
+        emptyDir: {}
       {{- end }}
       {{- if .Values.persistence.config.existingClaim }}
-        - name: config
-          persistentVolumeClaim:
-          claimName: {{ .Values.persistence.config.existingClaim }}
+      - name: config
+        persistentVolumeClaim:
+        claimName: {{ .Values.persistence.config.existingClaim }}
+      {{ else if not .Values.persistence.config.storageClassName }}
+      - name: config
+        emptyDir: {}
       {{- end }}
 
       {{- with .Values.nodeSelector }}
@@ -115,4 +121,41 @@ spec:
       {{- with .Values.tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}
+      {{- end }}
+      volumeClaimTemplates:
+      {{- if and .Values.persistence.userdata.storageClassName (not .Values.persistence.userdata.existingClaim) }}
+        - metadata:
+            name: userdata
+            namespace: {{ .Release.Namespace }}
+            labels:
+              app.kubernetes.io/name: {{ include "openhab.name" . }}
+              app.kubernetes.io/instance: {{ .Release.Name }}
+              app.kubernetes.io/managed-by: {{ .Release.Service }}
+          spec:
+            {{- if .Values.persistence.userdata.storageClassName }}
+            storageClassName: {{ .Values.persistence.userdata.storageClassName | quote }}
+            {{- end }}
+            accessModes:
+              - {{ .Values.persistence.userdata.accessMode | quote }}
+            resources:
+            requests:
+              storage: {{ .Values.persistence.userdata.size | quote }}
+      {{- end }}
+      {{- if and .Values.persistence.config.storageClass (not .Values.persistence.config.existingClaim) }}
+        - metadata:
+            name: config
+            namespace: {{ .Release.Namespace }}
+            labels:
+              app.kubernetes.io/name: {{ include "openhab.name" . }}
+              app.kubernetes.io/instance: {{ .Release.Name }}
+              app.kubernetes.io/managed-by: {{ .Release.Service }}
+          spec:
+            {{- if .Values.persistence.config.storageClassName }}
+            storageClassName: {{ .Values.persistence.config.storageClassName | quote }}
+            {{- end }}
+            accessModes:
+              - {{ .Values.persistence.config.accessMode | quote }}
+            resources:
+            requests:
+              storage: {{ .Values.persistence.config.size | quote }}
       {{- end }}
