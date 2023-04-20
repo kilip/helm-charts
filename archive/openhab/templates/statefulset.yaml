@@ -95,6 +95,39 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
+            - name: OPENHAB_CONF
+              valueFrom:
+                configMapKeyRef:
+                  name: "openhab"
+                  key: "OPENHAB_CONF"
+            - name: OPENHAB_USERDATA
+              valueFrom:
+                configMapKeyRef:
+                  name: "openhab"
+                  key: "OPENHAB_USERDATA"
+            - name: USER_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: "openhab"
+                  key: "USER_ID"
+            - name: GROUP_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: "openhab"
+                  key: "GROUP_ID"
+            - name: OPENHAB_HTTP_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: "openhab"
+                  key: "OPENHAB_HTTP_PORT"
+            - name: OPENHAB_HTTPS_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: "openhab"
+                  key: "OPENHAB_HTTPS_PORT"
+            - name: EXTRA_JAVA_OPTS
+              value: "-Duser.timezone={{ .Values.environment.openhab.TIMEZONE }}"
+
           {{- if .Values.openhabCloudSecretName }}
             - name: OPENHAB_CLOUD_UUID
               valueFrom:

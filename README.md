@@ -10,7 +10,7 @@ Please refer to Helm's [documentation](https://helm.sh/docs/) to get started.
 Once Helm is set up properly, add the repo as follows:
 
 ```console
-helm repo add kilip https://charts.itstoni.com/
+helm repo add olympus https://charts.itstoni.com/
 ```
 
-You can then run `helm search repo kilip` to see the charts.
+You can then run `helm search repo olympus` to see the charts.

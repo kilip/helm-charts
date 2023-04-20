@@ -1,0 +1,118 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "openhab.fullname" . }}
+  labels:
+    {{- include "openhab.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "openhab.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "openhab.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "openhab.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        # start container
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: {{ include "openhab.image" . }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+          volumeMounts:
+            - name: userdata
+              mountPath: /openhab/userdata
+            - name: config
+              mountPath: /openhab/conf
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          env:
+            - name: USER_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: "openhab"
+                  key: "user_id"
+            - name: GROUP_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: "openhab"
+                  key: "group_id"
+            - name: OPENHAB_HTTP_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: "openhab"
+                  key: "http_port"
+            - name: OPENHAB_HTTPS_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: "openhab"
+                  key: "https_port"
+            - name: EXTRA_JAVA_OPTS
+              value: "-Duser.timezone={{ .Values.openhab.timezone }}"
+          {{- if .Values.openhab.cloud_uuid }}
+            - name: OPENHAB_CLOUD_UUID
+              valueFrom:
+                configMapKeyRef:
+                  name: "openhab"
+                  key: "uuid"
+          {{- end }}
+          {{- if .Values.openhab.cloud_secret }}
+            - name: OPENHAB_CLOUD_SECRET
+              valueFrom:
+                configMapKeyRef:
+                  name: "openhab"
+                  key: "secret"
+          {{- end }}
+        # end container
+  
+      volumes:
+      {{- if .Values.persistence.userdata.existingClaim }}
+        - name: userdata
+          persistentVolumeClaim:
+          claimName: {{ .Values.persistence.userdata.existingClaim }}
+      {{- end }}
+      {{- if .Values.persistence.config.existingClaim }}
+        - name: config
+          persistentVolumeClaim:
+          claimName: {{ .Values.persistence.config.existingClaim }}
+      {{- end }}
+
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
