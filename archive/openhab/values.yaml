@@ -97,16 +97,9 @@ affinity: {}
 
 openhab:
   timezone: "UTC"
-  user_id: "1000"
-  group_Id: "1000"
+  user_id: "9001"
+  group_id: "9001"
   http_port: "8080"
   https_port: "8443"
   cloud_uuid:
   cloud_secret:
-
-gitConfig:
-  enabled: false
-  repoUrl: ""
-  branch: master
-  # Define ssh private key if your repo is private
-  # secretName: git-credentials

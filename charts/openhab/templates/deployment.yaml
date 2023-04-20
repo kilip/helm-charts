@@ -81,14 +81,14 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: "openhab"
-                  key: "uuid"
+                  key: "cloud_uuid"
           {{- end }}
           {{- if .Values.openhab.cloud_secret }}
             - name: OPENHAB_CLOUD_SECRET
               valueFrom:
                 configMapKeyRef:
                   name: "openhab"
-                  key: "secret"
+                  key: "cloud_secret"
           {{- end }}
         # end container
   
