@@ -1,0 +1,99 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "jellyfin.fullname" . }}
+  labels:
+    {{- include "jellyfin.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "jellyfin.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "jellyfin.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      volumes:
+      {{- if .Values.persistence.config.existingClaim }}
+        - name: jellyfin-config
+          persistentVolumeClaim:
+          {{- with .Values.persistence.existingClaim }}
+            claimName: {{ tpl . $ }}
+          {{- end }}
+      {{- else }}
+        - name: jellyfin-config
+          emptyDir: {}
+      {{- end }}
+      {{- if .Values.persistence.cache.existingClaim }}
+        - name: jellyfin-cache
+          persistentVolumeClaim:
+          {{- with .Values.persistence.existingClaim }}
+            claimName: {{ tpl . $ }}
+          {{- end }}
+      {{- else }}
+        - name: jellyfin-cache
+          emptyDir: {}
+      {{- end }}
+      {{- if .Values.persistence.media.existingClaim }}
+        - name: jellyfin-media
+          persistentVolumeClaim:
+          {{- with .Values.persistence.existingClaim }}
+            claimName: {{ tpl . $ }}
+          {{- end }}
+      {{- else }}
+        - name: jellyfin-media
+          emptyDir: {}
+      {{- end }}
+      serviceAccountName: {{ include "jellyfin.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - name: jellyfin-config
+              mountPath: /config
+            - name: jellyfin-cache
+              mountPath: /cache
+            - name: jellyfin-media
+              mountPath: /media
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
