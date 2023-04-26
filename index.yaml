@@ -23,6 +23,19 @@ entries:
   jellyfin:
   - apiVersion: v2
     appVersion: 10.8.10
+    created: "2023-04-26T14:27:21.11929252Z"
+    description: A Helm chart for Kubernetes
+    digest: ead4e18153e0a7a029917a7bc0c4df0776f9a7a3f11d2fbe5a6de7b0fc3845c8
+    icon: https://jellyfin.org/images/logo.svg
+    maintainers:
+    - name: kilip
+    name: jellyfin
+    type: application
+    urls:
+    - https://github.com/kilip/helm-charts/releases/download/jellyfin-10.8.10-rc.2/jellyfin-10.8.10-rc.2.tgz
+    version: 10.8.10-rc.2
+  - apiVersion: v2
+    appVersion: 10.8.10
     created: "2023-04-26T13:49:50.205582378Z"
     description: A Helm chart for Kubernetes
     digest: af08c2fda847ddbd615021c0bb4c6b6514bac39b1ad1f02654b2ecb122550967
