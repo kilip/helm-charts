@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "tasmo-admin.fullname" . }}
+  name: {{ include "tasmoAdmin.fullname" . }}
   labels:
-    {{- include "tasmo-admin.labels" . | nindent 4 }}
+    {{- include "tasmoAdmin.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "tasmo-admin.selectorLabels" . | nindent 6 }}
+      {{- include "tasmoAdmin.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,7 +18,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "tasmo-admin.selectorLabels" . | nindent 8 }}
+        {{- include "tasmoAdmin.selectorLabels" . | nindent 8 }}
     spec:
       volumes:
       {{- if .Values.persistence.existingClaim }}
@@ -37,7 +37,7 @@ spec:
             name: tasmoadmin-data
             namespace: {{ .Release.Namespace }}
             labels:
-              app.kubernetes.io/name: {{ include "tasmoadmin.name" . }}
+              app.kubernetes.io/name: {{ include "tasmoAdmin.name" . }}
               app.kubernetes.io/instance: {{ .Release.Name }}
               app.kubernetes.io/managed-by: {{ .Release.Service }}
           spec:
@@ -54,7 +54,7 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "tasmo-admin.serviceAccountName" . }}
+      serviceAccountName: {{ include "tasmoAdmin.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
