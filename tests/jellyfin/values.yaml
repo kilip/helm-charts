@@ -1,0 +1,4 @@
+#persistence:
+#  enabled: true
+#  storageClassName: standard
+#  accessMode: ReadWriteMany
