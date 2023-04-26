@@ -6,4 +6,4 @@ icon: https://jellyfin.org/images/logo.svg
 maintainers:
   - name: kilip
 appVersion: 10.8.10
-version: 10.8.10-rc.1
+version: 10.8.10-rc.2

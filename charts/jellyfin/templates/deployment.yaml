@@ -28,7 +28,7 @@ spec:
       {{- if .Values.persistence.config.existingClaim }}
         - name: jellyfin-config
           persistentVolumeClaim:
-          {{- with .Values.persistence.existingClaim }}
+          {{- with .Values.persistence.config.existingClaim }}
             claimName: {{ tpl . $ }}
           {{- end }}
       {{- else }}
@@ -38,7 +38,7 @@ spec:
       {{- if .Values.persistence.cache.existingClaim }}
         - name: jellyfin-cache
           persistentVolumeClaim:
-          {{- with .Values.persistence.existingClaim }}
+          {{- with .Values.persistence.cache.existingClaim }}
             claimName: {{ tpl . $ }}
           {{- end }}
       {{- else }}
@@ -48,7 +48,7 @@ spec:
       {{- if .Values.persistence.media.existingClaim }}
         - name: jellyfin-media
           persistentVolumeClaim:
-          {{- with .Values.persistence.existingClaim }}
+          {{- with .Values.persistence.media.existingClaim }}
             claimName: {{ tpl . $ }}
           {{- end }}
       {{- else }}
