@@ -96,7 +96,7 @@ spec:
       {{- if .Values.persistence.userdata.existingClaim }}
       - name: userdata
         persistentVolumeClaim:
-        claimName: {{ .Values.persistence.userdata.existingClaim }}
+          claimName: {{ .Values.persistence.userdata.existingClaim }}
       {{- else if not .Values.persistence.userdata.storageClassName }}
       - name: userdata
         emptyDir: {}
@@ -104,7 +104,7 @@ spec:
       {{- if .Values.persistence.config.existingClaim }}
       - name: config
         persistentVolumeClaim:
-        claimName: {{ .Values.persistence.config.existingClaim }}
+          claimName: {{ .Values.persistence.config.existingClaim }}
       {{ else if not .Values.persistence.config.storageClassName }}
       - name: config
         emptyDir: {}
