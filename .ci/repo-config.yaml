@@ -1,0 +1,9 @@
+---
+excluded-charts-lint:
+  - charts/common
+
+excluded-charts-install:
+  - charts/common
+
+excluded-charts-release:
+  - charts/common-test

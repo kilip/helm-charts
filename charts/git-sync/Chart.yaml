@@ -1,0 +1,10 @@
+apiVersion: v2
+name: git-sync
+description: A sidecar app which clones a git repo and keeps it in sync with the upstream.
+icon: https://git-scm.com/images/logos/downloads/Git-Icon-Black.svg
+type: application
+version: 1.0.0-rc.1
+# renovate: datasource=docker image=registry.k8s.io/git-sync/git-sync
+appVersion: "v3.6.5"
+maintainers:
+  - name: kilip
