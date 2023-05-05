@@ -90,5 +90,4 @@ env:
   GIT_SYNC_HTTP_PPROF: "true"
   GIT_SYNC_WAIT: "5"
 
-#args: []
 args: ['-v=3']
