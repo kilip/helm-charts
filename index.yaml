@@ -1,25 +1,5 @@
 apiVersion: v1
 entries:
-  emby:
-  - apiVersion: v2
-    appVersion: 4.5.2.0
-    created: "2020-10-22T10:25:28.275235254Z"
-    description: Emby Media SErver
-    digest: 6da7720df0eaeb642c36f5ec4769f15c165e4e70ee1d6d821310398056c7978d
-    home: https://charts.itstoni.com
-    icon: https://avatars3.githubusercontent.com/u/3607473?s=200&v=4
-    keywords:
-    - smart-home
-    - emby
-    - media
-    maintainers:
-    - name: kilip
-      url: https://itstoni.com
-    name: emby
-    type: application
-    urls:
-    - https://github.com/kilip/helm-charts/releases/download/emby-1.0.1/emby-1.0.1.tgz
-    version: 1.0.1
   jellyfin:
   - apiVersion: v2
     appVersion: 10.8.10
