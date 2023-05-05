@@ -86,11 +86,11 @@ env:
   GIT_SYNC_DEST: latest
   GIT_SYNC_BRANCH: main
   GIT_SYNC_SUBMODULES: "off"
-  GIT_SYNC_HTTP_METRICS: "true"
+  GIT_SYNC_HTTP_METRICS: "false"
   GIT_SYNC_HTTP_PPROF: "true"
   GIT_SYNC_WAIT: "5"
 
-args: ['-v=3']
+args: []
 
 persistence:
   existingClaim: ""

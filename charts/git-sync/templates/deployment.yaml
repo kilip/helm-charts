@@ -27,6 +27,17 @@ spec:
       serviceAccountName: {{ include "git-sync.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+
+      volumes:
+      {{- if .Values.persistence.existingClaim }}
+        - name: git-sync
+          persistenceExistingClaim:
+            claimName: {{.Values.persistence.existingClaim}}
+      {{ else }}
+        - name: git-sync
+          emptyDir: {}
+      {{ end }}
+
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -63,7 +74,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           {{- if .Values.persistence.existingClaim }}
           volumeMounts:
-            - name: {{ .Values.persistence.existingClaim }}
+            - name: git-sync
               mountPath: "/tmp/git"
           {{- end }}
       {{- with .Values.nodeSelector }}

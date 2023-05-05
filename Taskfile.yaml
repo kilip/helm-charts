@@ -21,6 +21,6 @@ tasks:
   install:
     cmds:
       - helm uninstall {{.CHART}} || exit 0
-      - helm install {{.CHART}} {{.LIST_CHANGED}}
+      - helm install {{.CHART}} {{.LIST_CHANGED}} {{.CLI_ARGS}}
     vars:
       CHART: '{{ (split "/" .LIST_CHANGED)._1 }}'
