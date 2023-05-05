@@ -27,6 +27,20 @@ entries:
     urls:
     - https://github.com/kilip/helm-charts/releases/download/jellyfin-10.8.10-rc.1/jellyfin-10.8.10-rc.1.tgz
     version: 10.8.10-rc.1
+  openhab:
+  - apiVersion: v2
+    appVersion: 3.4.3
+    created: "2023-05-05T16:38:19.889750787Z"
+    description: A Helm chart for Kubernetes
+    digest: d4774c98365f06606da6f8ddd3f04dec9e4f55ff479ad8be6db0086a0babb0d6
+    icon: https://www.openhab.org/openhab-logo-square.png
+    maintainers:
+    - name: kilip
+    name: openhab
+    type: application
+    urls:
+    - https://github.com/kilip/helm-charts/releases/download/openhab-3.4.3-rc.4/openhab-3.4.3-rc.4.tgz
+    version: 3.4.3-rc.4
   tasmo-admin:
   - apiVersion: v2
     appVersion: v3.0.2
