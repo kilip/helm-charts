@@ -1,5 +1,20 @@
 apiVersion: v1
 entries:
+  git-sync:
+  - apiVersion: v2
+    appVersion: v3.6.5
+    created: "2023-05-05T20:09:42.333531603Z"
+    description: A sidecar app which clones a git repo and keeps it in sync with the
+      upstream.
+    digest: 4cafe518aa049ce3ba222fbfd3073880aeab03b79a89e52659f053f05cee39a7
+    icon: https://git-scm.com/images/logos/downloads/Git-Icon-Black.svg
+    maintainers:
+    - name: kilip
+    name: git-sync
+    type: application
+    urls:
+    - https://github.com/kilip/helm-charts/releases/download/git-sync-1.0.0-rc.1/git-sync-1.0.0-rc.1.tgz
+    version: 1.0.0-rc.1
   jellyfin:
   - apiVersion: v2
     appVersion: 10.8.10
@@ -134,4 +149,4 @@ entries:
     urls:
     - https://github.com/kilip/helm-charts/releases/download/tasmo-admin-1.0.2/tasmo-admin-1.0.2.tgz
     version: 1.0.2
-generated: "2023-05-05T17:11:38.943990170Z"
+generated: "2023-05-05T20:09:42.333554104Z"
