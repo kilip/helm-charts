@@ -38,7 +38,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 80
+  port: 8080
 
 ingress:
   enabled: false
@@ -91,3 +91,6 @@ env:
   GIT_SYNC_WAIT: "5"
 
 args: ['-v=3']
+
+persistence:
+  existingClaim: ""

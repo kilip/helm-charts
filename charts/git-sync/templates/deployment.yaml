@@ -61,6 +61,11 @@ spec:
                 - /tmp/git/{{ .Values.env.GIT_SYNC_DEST }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          {{- if .Values.persistence.existingClaim }}
+          volumeMounts:
+            - name: {{ .Values.persistence.existingClaim }}
+              mountPath: "/tmp/git"
+          {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
