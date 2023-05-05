@@ -1,14 +1,15 @@
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ include "openhab.fullname" . }}
+  name: {{ include "openhab.fullname" . }}-config
   labels:
     {{- include "openhab.labels" . | nindent 4 }}
 data:
-  OPENHAB_CONF: '{{ default "/data/config" .Values.environment.OPENHAB_CONF }}'
-  OPENHAB_USERDATA: '{{ default "/data/userdata" .Values.environment.OPENHAB_USERDATA }}'
-  USER_ID: '{{ default "1000" .Values.environment.USER_ID }}'
-  GROUP_ID: '{{ default "1000" .Values.environment.GROUP_ID }}'
-  OPENHAB_HTTP_PORT: '{{ default "8080" .Values.environment.OPENHAB_HTTP_PORT }}'
-  OPENHAB_HTTPS_PORT: '{{ default "8443" .Values.environment.OPENHAB_HTTPS_PORT }}'
-  
+  timezone: '{{ default "UTC" .Values.openhab.timezone }}'
+  user_id: '{{ default "9001" .Values.openhab.user_id }}'
+  group_id: '{{ default "9001" .Values.openhab.user_id }}'
+  http_port: '{{ default "8080" .Values.openhab.http_port }}'
+  https_port: '{{ default "8443" .Values.openhab.https_port }}'
+  cloud_uuid: '{{ default "" .Values.openhab.cloud_uuid }}'
+  cloud_secret: '{{ default "" .Values.openhab.cloud_secret }}'
