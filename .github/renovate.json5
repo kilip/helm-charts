@@ -1,0 +1,7 @@
+{
+  extends: [
+    "github>kilip/renovate-config",
+    "github>kilip/renovate-config:automerge-github-actions",
+  ],
+  repositories: ["kilip/helm-charts"],
+}
