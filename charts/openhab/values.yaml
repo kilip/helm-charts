@@ -72,3 +72,7 @@ persistence:
     ## The value is evaluated as a template
     ## So, for example, the name can depend on .Release or .Chart
     # existingClaim: ""
+
+git:
+  enabled: false
+  image: registry.k8s.io/git-sync/git-sync:v3.6.5

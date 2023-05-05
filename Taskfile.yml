@@ -3,6 +3,8 @@ version: "3"
 tasks:
   install:
     cmds:
+      - helm uninstall {{.CHART}} || exit 0
+      - kubectl apply -k tests/{{.CHART}}
       - helm install {{.CHART}} charts/{{.CHART}} --values tests/{{.CHART}}/{{.VALUES}}
     vars:
       CHART: '{{ (split " " .CLI_ARGS)._0 }}'
