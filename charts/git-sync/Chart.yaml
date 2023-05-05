@@ -1,0 +1,9 @@
+apiVersion: v2
+name: git-sync
+description: A Helm chart for Kubernetes
+icon: https://git-scm.com/downloads/logos
+type: application
+version: 1.0.0-rc.1
+appVersion: "v3.6.5"
+maintainers:
+  - name: kilip

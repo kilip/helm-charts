@@ -1,0 +1,26 @@
+---
+version: "3"
+
+vars:
+  PROJECT_DIR:
+    sh: "git rev-parse --show-toplevel"
+  LIST_CHANGED:
+    sh: "ct list-changed"
+
+includes:
+  ct: .taskfiles/charts.yaml
+  #docs: .taskfiles/docs.yaml
+  precommit: .taskfiles/precommit.yaml
+
+tasks:
+  default:
+    silent: true
+    cmds:
+      - task -l
+
+  install:
+    cmds:
+      - helm uninstall {{.CHART}} || exit 0
+      - helm install {{.CHART}} {{.LIST_CHANGED}}
+    vars:
+      CHART: '{{ (split "/" .LIST_CHANGED)._1 }}'
