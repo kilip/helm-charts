@@ -6,5 +6,5 @@
   "platform": "github",
   "username": "olympus-bot[bot]",
   "gitAuthor": "olympus-bot <132103405+olympus-bot[bot]@users.noreply.github.com>",
-  repositories: ["kilip/helm-charts"],
+  "repositories": ["kilip/helm-charts"],
 }
