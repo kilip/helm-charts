@@ -1,0 +1,15 @@
+apiVersion: v2
+name: homelab
+description: An application to monitor your homelab nodes
+home: https://github.com/kilip/homelab-monitor
+icon: https://github.com/kilip/homelab-monitor/blob/bd3388d3c20702bff4550c6e4f0533c9199933df/icon.jpeg
+type: application
+version: 1.0.0-rc.1
+appVersion: latest
+maintainers:
+  - name: kilip
+dependencies:
+  - name: postgresql
+    version: ~12.1.14
+    repository: https://charts.bitnami.com/bitnami/
+    condition: postgresql.enabled
