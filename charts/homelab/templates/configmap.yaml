@@ -5,10 +5,10 @@ metadata:
   labels:
     {{- include "homelab.labels" . | nindent 4 }}
 data:
-  php-app-env: {{ .Values.php.appEnv | quote }}
-  php-app-debug: {{ .Values.php.appDebug | quote }}
-  php-cors-allow-origin: {{ .Values.php.corsAllowOrigin | quote }}
-  php-trusted-hosts: {{ .Values.php.trustedHosts | quote }}
-  php-trusted-proxies: "{{ join "," .Values.php.trustedProxies }}"
+  php-app-env: {{ .Values.api.appEnv | quote }}
+  php-app-debug: {{ .Values.api.appDebug | quote }}
+  php-cors-allow-origin: {{ .Values.api.corsAllowOrigin | quote }}
+  php-trusted-hosts: {{ .Values.api.trustedHosts | quote }}
+  php-trusted-proxies: "{{ join "," .Values.api.trustedProxies }}"
   mercure-url: "http://{{ include "homelab.fullname" . }}/.well-known/mercure"
   mercure-public-url: {{ .Values.mercure.publicUrl | default "http://127.0.0.1/.well-known/mercure" | quote }}
