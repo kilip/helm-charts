@@ -27,10 +27,8 @@ spec:
       serviceAccountName: {{ include "homelab.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
-      {{- with .Values.initContainers }}
       initContainers:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
+        {{- toYaml .Values.initContainers | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}-caddy
           securityContext:
@@ -52,10 +50,8 @@ spec:
                 secretKeyRef:
                   name: {{ include "homelab.fullname" . }}
                   key: mercure-jwt-secret
-          {{- with .Values.envFrom }}
           envFrom:
-            {{- toYaml . | nindent 12 }}
-          {{- end }}
+            {{- toYaml .Values.envFrom | nindent 12 }}
           ports:
             - name: http
               containerPort: 80
@@ -138,10 +134,8 @@ spec:
                 secretKeyRef:
                   name: {{ include "homelab.fullname" . }}
                   key: mercure-jwt-secret
-          {{- with .Values.envFrom }}
           envFrom:
-            {{- toYaml . | nindent 12 }}
-          {{- end }}
+            {{- toYaml .Values.envFrom | nindent 12 }}
           volumeMounts:
             - mountPath: /var/run/php
               name: php-socket

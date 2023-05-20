@@ -36,10 +36,8 @@ spec:
           env:
             - name: NEXT_PUBLIC_ENTRYPOINT
               value: http://{{ include "homelab.fullname" . }}
-          {{- with .Values.envFrom }}
           envFrom:
-            {{- toYaml . | nindent 12 }}
-          {{- end }}
+            {{- toYaml .Values.envFrom | nindent 12 }}
           ports:
             - name: http
               containerPort: 3000
