@@ -48,6 +48,10 @@ spec:
                 secretKeyRef:
                   name: {{ include "homelab.fullname" . }}
                   key: mercure-jwt-secret
+          {{- with .Values.envFrom }}
+          envFrom:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
           ports:
             - name: http
               containerPort: 80
@@ -74,11 +78,11 @@ spec:
             periodSeconds: 3
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-        - name: {{ .Chart.Name }}-php
+        - name: {{ .Chart.Name }}-api
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.php.image.repository }}:{{ .Values.php.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.php.image.pullPolicy }}
+          image: "{{ .Values.api.image.repository }}:{{ .Values.api.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.api.image.pullPolicy }}
           env:
             - name: TRUSTED_HOSTS
               valueFrom:
@@ -130,6 +134,10 @@ spec:
                 secretKeyRef:
                   name: {{ include "homelab.fullname" . }}
                   key: mercure-jwt-secret
+          {{- with .Values.envFrom }}
+          envFrom:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
           volumeMounts:
             - mountPath: /var/run/php
               name: php-socket
