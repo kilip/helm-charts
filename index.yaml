@@ -15,6 +15,26 @@ entries:
     urls:
     - https://github.com/kilip/helm-charts/releases/download/git-sync-1.0.0-rc.1/git-sync-1.0.0-rc.1.tgz
     version: 1.0.0-rc.1
+  homelab:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2023-05-20T10:21:58.542158619Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: ~12.1.14
+    description: An application to monitor your homelab nodes
+    digest: b78e2fae3e66be77f89dde818aa0992f45246f943977fb2ef82b22a1db3fecf4
+    home: https://github.com/kilip/homelab-monitor
+    icon: https://github.com/kilip/homelab-monitor/blob/bd3388d3c20702bff4550c6e4f0533c9199933df/icon.jpeg
+    maintainers:
+    - name: kilip
+    name: homelab
+    type: application
+    urls:
+    - https://github.com/kilip/helm-charts/releases/download/homelab-1.0.0-rc.1/homelab-1.0.0-rc.1.tgz
+    version: 1.0.0-rc.1
   jellyfin:
   - apiVersion: v2
     appVersion: 10.8.10
@@ -149,4 +169,4 @@ entries:
     urls:
     - https://github.com/kilip/helm-charts/releases/download/tasmo-admin-1.0.2/tasmo-admin-1.0.2.tgz
     version: 1.0.2
-generated: "2023-05-17T09:15:06.608585156Z"
+generated: "2023-05-20T10:21:58.542318021Z"
