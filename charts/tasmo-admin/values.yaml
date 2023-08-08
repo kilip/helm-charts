@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: ghcr.io/tasmoadmin/tasmoadmin
   pullPolicy: IfNotPresent
-  tag: "v3.0.2"
+  tag: "v3.0.2@sha256:abdd18227cd3c44ce7e9e1b7ab94656fd7886c3f25dde488a27b60b40eda004d"
 
 imagePullSecrets: []
 nameOverride: ""
