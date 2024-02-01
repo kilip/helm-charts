@@ -10,6 +10,6 @@ maintainers:
   - name: kilip
 dependencies:
   - name: postgresql
-    version: 13.2.11
+    version: 13.4.4
     repository: https://charts.bitnami.com/bitnami
     condition: postgresql.enabled
