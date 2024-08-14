@@ -16,7 +16,7 @@ jobs:
           fetch-depth: 0
 
       - name: Turnstyle
-        uses: softprops/turnstyle@v1
+        uses: softprops/turnstyle@v2
         with:
           continue-after-seconds: 180
         env:
